@@ -1,0 +1,19 @@
+.Search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Input {
+  color: #fff;
+  border: 1px solid #f2f2f2;
+  background-color: transparent;
+  outline: none;
+  width: 20%;
+  padding: 15px;
+}
+
+.SearchButton {
+  width: 10%;
+  cursor: pointer;
+}

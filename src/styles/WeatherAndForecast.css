@@ -1,0 +1,10 @@
+.Weather {
+  padding: 45px;
+}
+
+.Forecast {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
