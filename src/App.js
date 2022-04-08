@@ -1,49 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "./components/Header";
-import { Loader } from "./components/Loader";
-import { Warning } from "./components/Warning";
-import { Coordination } from "./api/coordination";
-import { WeatherAndForecast } from "./components/WeatherAndForecast";
+import {
+  Header,
+  Loader,
+  Warning,
+  WeatherAndForecast,
+} from "./components/index";
+
+import { getCoordinatesOfAddress } from "./services/auth";
+
 import "./styles/App.css";
 
 const App = () => {
   const [weatherAndForecastInformation, setWeatherAndForecastInformation] =
     useState({});
-  const [type, setType] = useState("warning");
+  const [error, setError] = useState({ isError: true, message: "" });
+  const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState("");
 
   const findCity = (val) => {
     setAddress(val);
   };
 
-  const displayWarning = () => {
-    setType("warning");
-  };
-
   useEffect(() => {
     if (address === "") return;
 
-    setType("loading");
-    Coordination(address)
+    setLoading(true);
+    getCoordinatesOfAddress(address)
       .then((res) => {
-        if (res.data.city.name === undefined) {
-          displayWarning();
-          return;
-        }
         setWeatherAndForecastInformation(res.data);
-        setType("weatherAndForecast");
+        setLoading(false);
+        setError({ isError: false });
       })
-      .catch((error) => displayWarning());
+      .catch((error) => {
+        console.log("error", error.response.data.message);
+        setLoading(false);
+        setError({ isError: true, message: error.response.data.message });
+      });
   }, [address]);
 
   return (
     <div className="App">
       <div className="innerDiv">
         <Header findCity={findCity} />
-        {type == "loading" ? (
+        {loading ? (
           <Loader />
-        ) : type == "warning" ? (
-          <Warning />
+        ) : error.isError ? (
+          <Warning errorMessage={error.message} />
         ) : (
           <WeatherAndForecast weatherInfo={weatherAndForecastInformation} />
         )}
@@ -51,5 +53,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;

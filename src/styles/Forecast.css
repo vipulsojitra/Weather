@@ -3,3 +3,24 @@
   justify-content: center;
 }
 
+.DescriptionTitle{
+  font-size: 15px;
+}
+
+.ForecastDescription{
+  margin: 0px 5px;
+}
+
+.TempTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 5px;
+  font-size: 25px;
+}
+.ForecastWind{
+  align-items: center;
+  display: grid;
+  margin: 0px 5px;
+  grid-gap: 25px;
+}

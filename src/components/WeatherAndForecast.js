@@ -1,6 +1,6 @@
 import React from "react";
-import { Weather } from "./Weather";
-import { Forecast } from "./Forecast";
+import { Weather, Forecast } from "./index";
+
 import "../styles/WeatherAndForecast.css";
 
 export const WeatherAndForecast = ({ weatherInfo }) => {

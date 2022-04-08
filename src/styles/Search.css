@@ -10,10 +10,15 @@
   background-color: transparent;
   outline: none;
   width: 20%;
-  padding: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 
 .SearchButton {
-  width: 10%;
+  width: 100px;
   cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: #79aadf;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+
 import "../styles/Weather.css";
 
 export const Weather = ({ weatherInfo }) => {
@@ -8,7 +9,24 @@ export const Weather = ({ weatherInfo }) => {
   const tempFC = ((temp - 32) * 5) / 9;
   return (
     <div className="Container">
-      <div className="DateTitle">
+      <div className="WeatherDescription">
+        <img
+          src={
+            "https://openweathermap.org/img/wn/" +
+            weatherInfo.list[0].weather[0].icon +
+            ".png"
+          }
+          alt={weatherInfo.list[0].weather[0].main}
+        />
+        <div className="WeatherTitle">
+          {weatherInfo.list[0].weather[0].description}
+        </div>
+      </div>
+      <div className="WeatherInfo">
+        {Math.round(tempFC)}
+        <sup className="TemperatureIcon">°C</sup>
+      </div>
+      <div className="WeatherWind">
         <h3>
           {date.getDate() +
             "/" +
@@ -16,17 +34,8 @@ export const Weather = ({ weatherInfo }) => {
             "/" +
             date.getFullYear()}
         </h3>
-      </div>
-      <div className="WeatherInfo">
         <div>
-          <div className="Temperature">
-            Today's Weather {Math.round(tempFC)}
-            <sup className="TemperatureIcon">°C</sup>
-            {weatherInfo.list[0].weather[0].description}
-          </div>
-          <div>
-            Wind speed: {Math.round(weatherInfo.list[0].wind.speed * 3.6)} km/h{" "}
-          </div>
+          Wind: {Math.round(weatherInfo.list[0].wind.speed * 3.6)} km/h{" "}
         </div>
       </div>
     </div>

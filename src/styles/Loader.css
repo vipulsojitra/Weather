@@ -1,6 +1,6 @@
 .Loader {
   border: 3px solid #f2f2f2;
-  border-top: 3px solid green;
+  border-top: 3px solid #a1c5ec;
   border-radius: 50%;
   animation: spin 1.5s linear infinite;
   margin: 15% auto;
